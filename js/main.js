@@ -17,10 +17,22 @@ function pyramid(char, lines){
 /********  HEADERS **********/
 
 function oddEvenHeaders(highestHeader){
-	var html= "";
-	for (h = 1; h < highestHeader; h++){
-		html += "<h" + h + ">" + evenOrOdd(h) +"</h" + h+ ">\n";
+	var html= "", currentHeader, EvenOdd;
+
+	while (highestHeader > 0){ //checks for zero or negative input
+
+		if (highestHeader > 6)	currentHeader = 6;
+		else 	currentHeader = highestHeader;
+		
+		for (h = 1; h < currentHeader; h++){
+			evenOdd = evenOrOdd(h);
+			html += "<h" + h + " class = \'" + evenOdd + "\'>" + evenOdd + " </h" + h + ">\n";
+		} 
+
+		highestHeader -= 6;	//repeats for-loop if highestHeader > highest possible header in html
 	}
+
+
 	return html;
 }
 
@@ -33,6 +45,6 @@ function evenOrOdd(val){
 /**********  START  **************/
 
 pyramid("*", 8);
-document.write(oddEvenHeaders(6));
+document.write(oddEvenHeaders(50));
 
 
